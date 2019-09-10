@@ -62,17 +62,30 @@ public class ArticleServiceTest {
 	}
 
 	@Test
-	public void testIfArticleGetUpdated() {
+	public void testIfArticleGetsUpdated() {
 
 		Article inputArticle = new Article();
 		inputArticle.setId(1);
 		inputArticle.setTitle(mockTitle);
 
 		when(mockArticleRepository.save(any())).thenReturn(article);
-
+		when(articleService.exists(any())).thenReturn(true);
 		Article returnedArticle = articleService.updateArticle(inputArticle);
 
 		assertEquals(inputArticle.getId(), returnedArticle.getId());
 		assertEquals(inputArticle.getTitle(), returnedArticle.getTitle());
+	}
+	
+	@Test
+	public void testThrowsExceptionWhenIdDoesNotExistWhenUpdate() {
+
+		Article inputArticle = new Article();
+		inputArticle.setId(1);
+		inputArticle.setTitle(mockTitle);
+
+		when(mockArticleRepository.save(any())).thenReturn(article);
+		when(articleService.exists(any())).thenReturn(false);
+	
+		Assertions.assertThrows(IllegalArgumentException.class, () -> articleService.updateArticle(article));
 	}
 }

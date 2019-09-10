@@ -23,7 +23,10 @@ public class ArticleService {
 	}
 
 	public Article updateArticle(final Article article) {
-		return repository.save(article);
+		if(exists(article.getId()))
+			return repository.save(article);
+		else
+			throw new IllegalArgumentException(String.format("Entered id - %s does not exists. Thus, article cannot be modified", article.getId()));
 	}
 
 	public List<Article> findAllArticles() {
