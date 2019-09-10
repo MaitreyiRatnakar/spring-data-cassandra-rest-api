@@ -37,13 +37,12 @@ public class ArticleServiceTest {
 	@BeforeEach
 	public void setup() {
 		article = new Article();
+		article.setId(1);
+		article.setTitle(mockTitle);
 	}
 
 	@Test
 	public void testIfArticleGetsCreated() {
-
-		article.setId(1);
-		article.setTitle(mockTitle);
 
 		when(mockArticleRepository.existsById(any())).thenReturn(false);
 		when(mockArticleRepository.save(any())).thenReturn(article);
@@ -68,9 +67,6 @@ public class ArticleServiceTest {
 		Article inputArticle = new Article();
 		inputArticle.setId(1);
 		inputArticle.setTitle(mockTitle);
-
-		article.setId(1);
-		article.setTitle(mockTitle);
 
 		when(mockArticleRepository.save(any())).thenReturn(article);
 
