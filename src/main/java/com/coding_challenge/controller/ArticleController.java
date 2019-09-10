@@ -22,6 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.coding_challenge.model.Article;
 import com.coding_challenge.service.ArticleService;
 
+import io.swagger.annotations.Api;
+
+@Api
 @RestController
 @Validated
 public class ArticleController {
