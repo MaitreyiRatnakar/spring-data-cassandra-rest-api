@@ -60,7 +60,7 @@ PUT localhost:9999/artiles
 
 ### Adding Data to Cassandra
 
-Use the sample INSERT queries provided to add data. You can also use POST endpoint to create a new "Article" entry.       
+Use the sample INSERT queries provided in file 'cassandra queries' to add data. You can also use POST endpoint to create a new "Article" entry.       
 **Note:**  
 - POST body should be valid JSON to add data successfully. 
 - "Description" string data is tricky and need to be escaped string to have valid JSON.
