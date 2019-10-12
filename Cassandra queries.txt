@@ -1,0 +1,27 @@
+
+/*Creating keyspace - sample*/
+
+create keyspace sample with replication={'class':'SimpleStrategy', 'replication_factor':1};
+
+/*Create table Article*/
+
+Create Table Article(
+               id int Primary Key,
+               title text,
+               description text,
+               author text,
+               tags text,
+               created_at text,
+               updated_at text,
+          );
+		  
+/*Insert data into table*/
+
+Insert into sample.Article(ID, title, description, author, tags, created_at, updated_at) values (1, 'Brazil opens vast Amazon reserve to mining', 'Brazil''s government has abolished a vast national reserve in the Amazon to open up the area to mining.
+The area, covering 46,000 sq km (17,800 sq miles), straddles the northern states of Amapa and Para, and is thought to be rich in gold, and other minerals.
+The government said nine conservation and indigenous land areas within it would continue to be legally protected.
+But activists have voiced concern that these areas could be badly compromised.
+A decree from President Michel Temer abolished a protected area known as the National Reserve of Copper and Associates (Renca).
+Its size is larger than Denmark and about 30% of it will be open to mining.
+The mining and energy ministry says protected forest areas and indigenous reserves will not be affected.
+"The objective of the measure is to attract new investments, generating wealth for the country and employment and income for society, always based on the precepts of sustainability," the ministry said in a statement.', 'BBC','Brazil, amazon', '4.12.2016', '4.12.2016');

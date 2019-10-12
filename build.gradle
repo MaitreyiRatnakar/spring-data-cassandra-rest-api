@@ -1,0 +1,50 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.8.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
+}
+
+ext {
+	swaggerVersion = '2.9.2'
+	mockitoVersion = '2.23.4'
+	junitJupiterVersion = '5.4.1'
+	junitLauncherVersion = '1.4.1'
+}
+
+group = 'com.welltok'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	//Spring boot and data
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-data-cassandra'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	
+	//Lombok
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	
+	// Swagger
+	implementation group: 'io.springfox', name: 'springfox-swagger2', version: "${swaggerVersion}"
+  	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: "${swaggerVersion}"
+
+	//Tests
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: "${mockitoVersion}"
+    testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: "${mockitoVersion}"
+  	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  	testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: "${junitJupiterVersion}"
+  	testRuntime group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: "${junitJupiterVersion}"
+	testRuntime group: 'org.junit.platform', name: 'junit-platform-commons', version: "${junitLauncherVersion}"
+  	testRuntime group: 'org.junit.platform', name: 'junit-platform-launcher', version: "${junitLauncherVersion}"
+}
